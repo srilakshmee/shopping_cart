@@ -1,0 +1,10 @@
+.env
+myenv
+venv
+temp
+tmp
+__pycache__
+
+*.pyc
+*.coverage
+env.sh
