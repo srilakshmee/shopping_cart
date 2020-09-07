@@ -18,6 +18,8 @@ class cartbasket(object):
 
     def checkout(self):
         self.items , self.cart_total = getcartdata(self.c_id)
+        print(self.items)
+        print(self.cart_total)
         disc_list = getdiscountstrategy(self)
         self.final_price = self.cart_total
         for temp_disc in disc_list :

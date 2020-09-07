@@ -37,7 +37,6 @@ def addtocart(item_list,c_id):
         price_list = getprice(data)
 
         for i in range(0,len(data)):
-            #todo check if cart id exists and pid exists in the tables
             q = data[i]['quantity']
             p = data[i]['p_id']
             for ci in ca.cart_data:
@@ -48,10 +47,15 @@ def addtocart(item_list,c_id):
                     break
             else:
                 pr =  q * price_list[data[i]['p_id']]
-                db.session.add(cart_item(c_id=c_id,p_id=p,quantity=q,
-                cost = pr))
-            tot_price += pr
-        ca.tot_price = tot_price
+                ci = cart_item(c_id=c_id,p_id=p,quantity=q,
+                cost = pr)
+                db.session.add(ci)
+                ca.cart_data.append(ci)
+            #tot_price += pr
+        ca.tot_price = 0
+        for ci in ca.cart_data:
+            ca.tot_price = float(ca.tot_price) + float(ci.cost)
+
     except KeyError:
         db.session.rollback()
         raise CustomException(

@@ -67,11 +67,11 @@ class TestCartCheckout(BaseTestCase):
                 '/cart/checkout/1')
 
             data = json.loads(response.data.decode())
-            self.assertEqual(data["final_price"],'44.00')
-            self.assertEqual(data["product_discount"],'6.00')
-            self.assertEqual(data["basket_discount"],'0')
-            self.assertEqual(data["disc_total"],'6.00')
-            self.assertEqual(data["cart_total"],'50.00')
+            self.assertEqual(data["final_price"],'90.00')
+            self.assertEqual(data["product_discount"],'0')
+            self.assertEqual(data["basket_discount"],'10.00')
+            self.assertEqual(data["disc_total"],'10.00')
+            self.assertEqual(data["cart_total"],'100.00')
 
             self.assertTrue(response.content_type == 'application/json')
             self.assertEqual(response.status_code, 200)
