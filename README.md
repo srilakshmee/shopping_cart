@@ -34,6 +34,8 @@ create the db for the first run
 ```sh
 $ python manage.py create_db
 ```
+## Run the script which contains some data to be present in the product and discount tables
+mysql --login-path=local  < project/dbscripts/create.sql
 
 ```sh
 $ python manage.py runserver
